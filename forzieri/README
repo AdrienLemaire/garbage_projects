@@ -1,0 +1,19 @@
+Small exercise to learn scrapy framework
+The goal is to get all bags from http://www.forzieri.com
+
+
+WHAT DOES IT DO:
+~~~~~~~~~~~~~~~~
+ - scraping all the page containing bags items, and get relative informations
+ - download bags images
+ - put all the bags items into the forzieri.com_products.xml file
+
+
+DEPENDENCIES :
+~~~~~~~~~~~~~~
+ - scrapy
+
+
+HOW TO USE :
+~~~~~~~~~~~~
+ # python scrapy-ctl.py crawl forzieri.com
