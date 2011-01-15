@@ -1,0 +1,22 @@
+{% extends base_template %}
+
+
+{% block title %}: {{ contact }}{% endblock %}
+
+
+{% block header %}
+    Contact : {{ contact }}
+{% endblock %}
+
+{% block content %}
+    <ul>
+        <li><span>E-mail</span>: {{ contact.email }}</li>
+        <li><span>Phone</span>: {{ contact.phone }}</li>
+        <li><span>Sex</span>: {{ contact.get_sex_display }}</li>
+        {% if contact.image %}
+            <li><span>Image</span>: <img src="{{ contact.image }}" /></li>
+        {% else %}
+            <li><span>Birthday</span>: {{ contact.birthday }}</li>
+        {% endif %}
+    </ul>
+{% endblock %}

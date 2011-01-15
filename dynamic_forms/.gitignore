@@ -1,0 +1,5 @@
+.venv
+*.pyc
+*.swp
+dynamic_forms.db
+coverage/*

@@ -1,0 +1,38 @@
+[
+    {
+        "pk": 1, 
+        "model": "contact.contact", 
+        "fields": {
+            "name": "Barack Obama", 
+            "image": "", 
+            "sex": true, 
+            "phone": "", 
+            "birthday": "1961-08-04", 
+            "email": "barack.obama@usa.com"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "contact.contact", 
+        "fields": {
+            "name": "菅 直人",
+            "image": "", 
+            "sex": true, 
+            "phone": "", 
+            "birthday": "1946-10-10", 
+            "email": "naoto.kan@japan.jp"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "contact.contact", 
+        "fields": {
+            "name": "David Cameron", 
+            "image": "/static/img/contact/david_cameron.jpg", 
+            "sex": true, 
+            "phone": "", 
+            "birthday": "", 
+            "email": "david.cameron@england.co.uk"
+        }
+    }
+]

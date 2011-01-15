@@ -1,0 +1,8 @@
+#list_contacts, #show_contact {
+    width: 50%;
+    float:left;
+}
+
+hr {
+    clear: both;
+}

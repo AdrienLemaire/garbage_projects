@@ -1,0 +1,41 @@
+{% extends base_template %}
+
+
+{% block title %}: Add user{% endblock %}
+
+{% block header %}
+    {% if warnings %}
+        <strong>{{ warnings }}</strong>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if not contactform %}
+        <h2>What kind of contact do you want to create ?</h2>
+
+        <ul>
+            <li><a href='{% url contact:add_contact type_form="birthday" %}'>A contact with a Birthday</a></li>
+            <li><a href='{% url contact:add_contact type_form="image" %}'>A contact with an Image</a></li>
+        </ul>
+    {% else %}
+        <form action="{% url contact:add_contact %}" method="post">
+            {% csrf_token %}
+             <table>
+                {% for field in contactform %}
+                <tr>
+                    <th>
+                        {{ field.label_tag }}
+                        {% if field.field.required %} *{% endif %}
+                    </th>
+                    <td>
+                        {{ field.errors }}
+                        {{ field }}
+                        {{ field.help_text }}
+                    </td>
+                </tr>
+                {% endfor %}
+             </table>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+    {% endif %}
+{% endblock %}

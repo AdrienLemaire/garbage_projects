@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block title %}: List users{% endblock %}
+
+
+{% block content %}
+    <h1>List users</h1>
+
+    {% if contacts %}
+    <div id="list_contacts">
+    <!-- list of users -->
+        <ul>
+            {% for contact in contacts %}
+            <li>
+                <strong>{{ contact.name}}</strong>
+                (<a href="{% url contact:show_contact pk=contact.pk %}">see details</a>)
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="show_contact">
+    <!-- details for one user -->
+    </div>
+    {% else %}
+        <p>Sorry there is currently no contact</p>
+    {% endif %}
+
+
+    <hr>
+    <a id="link_form" href="{% url contact:add_contact %}">Add a new contact</a>
+    <div id="add_contact"></div>
+    <div id="contact_form"></div>
+{% endblock %}
+
+
+{% block jquery_ready %}
+    var links_to_ajax = function(links, container, sublinks) {
+        $(links).each(function() {
+            $(this).click(function() {
+                $(container).load($(this).attr("href"), function () {
+                    if (sublinks != undefined) {
+                        links_to_ajax(sublinks, "#contact_form");
+                    }
+                });
+                return false;
+            });
+        });
+    }
+    links_to_ajax("#list_contacts a", "#show_contact")
+    links_to_ajax("#link_form", "#add_contact", "#add_contact a")
+
+    /*
+    $("#link_form").click(function() {
+        $("#add_contact").load($(this).attr("href"), function () {
+            $("a").each(function() {
+                $(this).click(function() {
+                    $("#contact_form").load($(this).attr("href"));
+                    return false;
+                });
+            });
+        });
+        return false;
+    });*/
+{% endblock %}

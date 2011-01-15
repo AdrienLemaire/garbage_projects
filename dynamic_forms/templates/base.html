@@ -1,0 +1,46 @@
+<!doctype html>  
+
+
+<head>
+  <title>
+      Dynamic Forms {% block title %}{% endblock %}
+  </title>
+
+  <meta charset="utf-8">
+  <!-- Force latest IE rendering engine (even in intranet) & Chrome Frame -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="Django Exercice about dynamic forms">
+  <meta name="author" content="Adrien Lemaire">
+  <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" />
+</head>
+
+
+<body>
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    
+    <footer>
+        {% block footer %}{% endblock %}
+
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js">
+    </script>
+    <script>
+        !window.jQuery && document.write(unescape('%3Cscript src="{{ MEDIA_URL }}js/jquery-1.4.4.js"%3E%3C/script%3E')
+        )
+    </script>
+    <script>
+        $(document).ready(function(){
+            {% block jquery_ready %}{% endblock %}
+        });
+    </script>
+      
+
+</body>
+</html>
