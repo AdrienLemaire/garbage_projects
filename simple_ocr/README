@@ -1,0 +1,41 @@
+Currently, the program is not finished. It allows to extract forms from a 
+picture into submatrix, and generate a matrix alphabet of the printable 
+ascii characters.
+
+
+
+DEPENDENCIES :
+~~~~~~~~~~~~~~
+ - python 2.6
+ - PIL
+ - numpy
+ - subprocess
+ - termcolor
+
+
+TO DO:
+~~~~~~
+ - Compare submatrix from images to the matrix alphabet to determine what is
+   the character representation of the submatrix.
+For this, I should extract the skeleton of the form (remove antialiasing), then
+scale it to have a matrix with the same shape as dictionary matrix. Once the
+matrix have the same width and height, I'll compare elements one by one.
+For A a point in the first matrix, and B the equivalent point in another matrix:
+   * A & B = 0  => return True
+   * A & B > 0  => return True (can also be  x < A & B < y, with 0 < x,y < 255)
+   * A xor B > 0 => return False
+The result will be a matrix of True and False. I'll be able to get a
+percentage, e.g. 80% True.
+Once the comparison has been done to each matrix of the alphabet, I'll keep the
+matrix with the best percentage, and it should be the correct character of the
+form.
+I currently struggle to scale a matrix while keeping good proportions, but I
+hope to solve this problem soon.
+
+
+HOW TO USE :
+~~~~~~~~~~~~
+ $ python ocr_base.py [IMG_FILE [COlOR_TEXT, COLOR_BACKGROUND]]
+ if defined, COLOR_TEXT and COLOR_BACKGROUND should be between 0 and 255.
+
+ $ python dict_generation.py [DIR [FONT]]
